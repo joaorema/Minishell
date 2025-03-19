@@ -91,8 +91,8 @@ void    print_args(s_minishell *mini);
 
 
 void    start_prompt(s_minishell **mini);
-void	ft_cmd(s_minishell *mini, char *av, int *fd);
-char	*find_dir(s_minishell *mini, char *cmd);
+
+
 void	error_exit(char *error);
 
 #endif

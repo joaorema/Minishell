@@ -11,20 +11,18 @@ void    start_prompt(s_minishell **mini)
         i = 0;
         buffer = ft_split(line, ' ');          
         add_history(line);
-          while(buffer[i])
+        while(buffer[i])
         {
             get_token(*mini, buffer[i]);
             i++;
         }
         if(ft_strncmp(*buffer, "exit", 4) == 0)
             mini_exit(*mini, NULL);
-        else if(ft_strncmp(*buffer, "print", 5) == 0)
+        if(ft_strncmp(*buffer, "print", 5) == 0)
         {
             print_tokens(*mini);
             print_args(*mini);
         }
-        else
-            ft_cmd(*mini, buffer[0], NULL);
         free(line);
         i = 0;
         while (buffer[i])
@@ -39,6 +37,7 @@ void   get_token(s_minishell *mini, char *str)
     char        *value = NULL;
     char        *key = NULL;
 
+    check_str(str);
     check_cmds(str, &key, &value);
     check_signs(str, &key, &value);
     check_redirect(str, &key, &value);
@@ -128,6 +127,8 @@ void    check_redirect(char *str, char **key, char **value)
         *value = "|";
     }
 }
+
+
  /*if(ft_strncmp(*buffer, "env", 3) == 0)
             print_env_list((*mini)->env);
         if(ft_strncmp(*buffer, "pwd", 3) == 0)

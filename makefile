@@ -21,8 +21,7 @@ SRCS = main.c \
        utils.c \
 	   init.c \
 	   parse.c \
-	   add.c \
-	   cmds.c
+	   add.c 
 
 OBJS = $(addprefix src/, $(SRCS:.c=.o))
 
